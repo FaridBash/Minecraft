@@ -48,4 +48,68 @@ background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, F
     height: 1fr;
     background: url('img/green.png')no-repeat center center/cover;
 }
+.stone{
+    width: 1fr;
+    height: 1fr;
+    background: url('img/stone.png')no-repeat center center/cover;
+}
+.cloud{
+    width: 1fr;
+    height: 1fr;
+    background: url('img/cloud1.jpg')no-repeat center center/cover;
+}
+.sun{
+    width: 1fr;
+    height: 1fr;
+    background: url('img/sun.png')no-repeat center center/cover;
+}
 
+
+#game-control{
+    width:23vw;
+    height: 100vh;
+    background-color: #005AA7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+#game-control img{
+    width: 2rem;
+    height: 2rem;
+    padding: 0.3rem;
+    /* border: 2px solid transparent; */
+    border-radius: 10px;
+    background: #005AA7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFDE4, #005AA7); 
+
+}
+
+#game-control img #axe{
+    cursor: url('./img/axe.png'),auto;
+}
+
+#game-control img:nth-child(1){
+    cursor: url('./img/pickaxe.png'),auto;
+}
+
+#game-control img:nth-child(3){
+    cursor: url('./img/shovel.png'),auto;
+}
+
+#game-control img:hover{
+    border: 2px solid orange;
+    background: #005AA7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FFFDE4, #005AA7); 
+}
+
+
+#game-control #inventory{
+    width: 100%;
+    height: 10rem;
+    background: green;
+}
