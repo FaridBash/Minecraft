@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+width: 100vw;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background: #005AA7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+#game-board{
+    /* background-color: #ccc; */
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns:repeat(25,1fr);
+    grid-template-rows:repeat(13,1fr);
+    
+}
+
+
+
+.ground-grass{
+    width: 1fr;
+    height: 1fr;
+    background: url('img/ground-grass.png')no-repeat center center/cover;
+}
+.ground{
+    width: 1fr;
+    height: 1fr;
+    background: url('img/ground.png')no-repeat center center/cover;
+}
+.wood{
+    width: 1fr;
+    height: 1fr;
+    background: url('img/wood.png')no-repeat center center/cover;
+}
+.green{
+    width: 1fr;
+    height: 1fr;
+    background: url('img/green.png')no-repeat center center/cover;
+}
+
