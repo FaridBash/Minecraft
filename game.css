@@ -25,7 +25,7 @@ background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, F
     display: grid;
     grid-template-columns:repeat(25,1fr);
     grid-template-rows:repeat(13,1fr);
-    cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/heart.png"), auto;
+   
 }
 
 
@@ -118,12 +118,12 @@ background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, F
     background: #333;
 }
 #game-control #inventory div{
-    width: 3rem;
-    height: fit-content;
+    width: 5rem;
+    height: 3rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    /* padding-left: 5px; */
+    justify-content: space-around;
+    padding: 5px;
     margin: 0.2rem;
     color: orange;
 }
@@ -131,4 +131,27 @@ background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, F
     margin: 5px;
     padding: 0;
 
+}
+
+.wood-cur{
+    cursor: url("./img/curs/35wood.png"), auto;
+    
+}
+.ground-cur{
+    cursor: url("./img/curs/35ground.png"), auto;
+    
+}
+.stone-cur{
+    cursor: url("./img/curs/35stone.png"), auto;
+    
+}
+
+.shovel-cur{
+    cursor: url("./img/curs/shovel.png"), auto;
+}
+.axe-cur{
+    cursor: url("./img/curs/axe\ .png"), auto;
+}
+.pickaxe-cur{
+    cursor: url("./img/curs/pickaxe.png"), auto;
 }
