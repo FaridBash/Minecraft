@@ -13,10 +13,10 @@ const mapArr=[
     [0,0,0,0,7,7,7,7,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,5,5,5,0,0,0,0],
-    [2,2,0,0,0,0,0,0,5,5,0,0,0,4,0,0,0,0,5,5,5,0,0,0,0],
-    [3,3,2,2,0,0,0,5,5,5,0,0,0,4,0,0,0,0,0,4,0,0,0,0,0],
+    [3,3,0,0,0,0,0,0,5,5,0,0,0,4,0,0,0,0,5,5,5,0,0,0,0],
+    [3,3,3,3,0,0,0,5,5,5,0,0,0,4,0,0,0,0,0,4,0,0,0,0,0],
     [3,3,3,3,6,0,5,5,5,5,0,0,0,4,0,0,0,0,0,4,5,5,0,0,0],
-    [3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+    [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3],
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,6,6,6,6,6,6,6],
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,6,6,6,6,6,6,6],
     [3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3]
@@ -276,10 +276,10 @@ function drawMap(){
     for (let i = 0; i < mapArr.length; i++) {
         for (let j = 0; j < mapArr[i].length; j++) {
             const element = mapArr[i][j];
-            // if(element==0){
-                //     // draw(gameb, cls,i,j);
-                //     draw(gameBoard, 'ground',i,j);
-                // }
+            if(element==0){
+                    // draw(gameb, cls,i,j);
+                    draw(gameBoard,'nothing',i,j);
+                }
                 if(element==1){
                     // draw(gameb, cls,i,j);
                     draw(gameBoard, 'sun',i,j);
@@ -322,7 +322,8 @@ let chosenClass;
 window.addEventListener('click', e=>{
     const clickedDiv=e.target;
 
-    if(clickedDiv.classList.value===''){
+    if(clickedDiv.classList.value==='' || clickedDiv.classList.value==='nothing'){
+        if(clickedDiv.classList.value==='nothing')clickedDiv.classList.remove('nothing');
         console.log("choseeeeeeen: "+chosenClass);
         console.log("can take ground"+ document.getElementById('amount-ground').getAttribute('can-take'));
         console.log("can take wood"+ document.getElementById('amount-wood').getAttribute('can-take'));

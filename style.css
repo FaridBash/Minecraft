@@ -40,8 +40,8 @@ main{
 
 #main-welcome{
     width:max-content;
-    height: 15rem;
-    margin: auto;
+    height: 12rem;
+    /* margin: auto; */
     /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
@@ -87,9 +87,10 @@ h1{
     height: 20vh;
     /* min-height: 100vmin; */
     display: grid;
-    grid-template-columns:repeat(35,1fr);
+    grid-template-columns:repeat(40,1fr);
     grid-template-rows:repeat(9,1fr);
-    border:1px solid #84fab0;
+    /* border:1px solid #84fab0; */
+    margin-top: 8%;
 }
 
 
@@ -97,4 +98,59 @@ h1{
     width: 1fr;
     height: 1fr;
     background: url('img/ground.png')no-repeat center center/cover;
+}
+
+.ground-grass{
+    width: 1fr;
+    height: 1fr;
+    background: url('img/ground-grass.png')no-repeat center center/cover;
+}
+
+#inst-section{
+    width: 30rem;
+    height: fit-content;
+    position: absolute;
+    top: 3%;
+    background: rgb(2,8,41);
+    background: linear-gradient(172deg, rgba(2,8,41,1) 30%, rgba(66,180,249,1) 96%);
+    padding: 2rem;
+    border-radius: 15px;
+    color: orange;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    /* margin: auto; */
+    display: none;
+}
+
+#inst-section h4{
+    margin: 1rem auto;
+}
+
+#inst-section ul,
+#inst-section #code,
+#inst-section #inve{
+    list-style: none;
+    border: 1px solid orange;
+    width: fit-content;
+    padding: 0.5rem;
+    border-radius: 15px;
+    margin-bottom: 0.5rem;
+    box-shadow: 5px 5px 18px #888888;
+}
+
+@media only screen and (max-width: 600px){
+    body{
+        font-size: 12px;
+    }
+    #maincraft{
+        width: 80%;
+        margin-top: 40%;
+    }
+
+    #inst-section{
+        width: 80%;
+        margin-top: 30%;
+    }
+    
 }
