@@ -117,7 +117,7 @@ background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, F
     height: 10rem;
     background: #333;
 }
-#game-control #inventory div{
+#game-control #inventory section{
     width: 5rem;
     height: 3rem;
     display: flex;
@@ -155,3 +155,4 @@ background: linear-gradient(to right, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, F
 .pickaxe-cur{
     cursor: url("./img/curs/pickaxe.png"), auto;
 }
+

@@ -96,7 +96,14 @@ function myFunction(box){
     stoneInvBool=document.getElementById('inv-s').getAttribute('choosen');
     woodInvBool=document.getElementById('inv-w').getAttribute('choosen');
     box.parentElement.style.border='2px solid orange'; 
+    if (Number(countGround.innerText)>1) countGround.setAttribute('can-take',"true");
+    // else if (Number(countGround.innerText)<1) countGround.setAttribute('can-take',"false");
     
+    if (Number(countWood.innerText)>1) countWood.setAttribute('can-take',"true");
+    // else if (Number(countWood.innerText)<1) countWood.setAttribute('can-take',"false");
+    
+    if (Number(countStone.innerText)>1) countStone.setAttribute('can-take',"true");
+    // else if (Number(countStone.innerText)<1) countStone.setAttribute('can-take',"false");
     if(groundInvBool==='true'){
         
         gameBoard.classList.add('ground-cur');
@@ -115,29 +122,47 @@ function myFunction(box){
     return box;
 }
 
+
+
 function invMinus(e){
+    // const e=document.getElementBy
     let counter=Number(e.innerText);
     console.log("main counter: "+counter);
     console.log("inv num: "+e.getAttribute('id'));
-    if(e.getAttribute('id')==='amount-stone'){
-        countStone.innerText=Number(counter-1);
+    if(Number(e.innerText)>0){
+        e.innerText=Number(counter-1);
         item='ground';
         console.log("stone counter: "+counter);
+        e.setAttribute('can-take',true);
+    }
+    else if(Number(e.innerText)===0){
+        e.setAttribute('can-take',false);
+    }
+
+    if (Number(countGround.innerText)>1) countGround.setAttribute('can-take',"true");
+    else if (Number(countGround.innerText)<1) countGround.setAttribute('can-take',"false");
+    
+    if (Number(countWood.innerText)>1) countWood.setAttribute('can-take',"true");
+    else if (Number(countWood.innerText)<1) countWood.setAttribute('can-take',"false");
+    
+    if (Number(countStone.innerText)>1) countStone.setAttribute('can-take',"true");
+    else if (Number(countStone.innerText)<1) countStone.setAttribute('can-take',"false");
+    // if(e.getAttribute('id')==='amount-stone'){
         
-        gameBoard.classList.add('stone-cur');
-    }
-    if(e.getAttribute('id')==='amount-wood'){
-        countWood.innerText=Number(counter-1);
-        item='wood';
-        gameBoard.classList.add('wood-cur');
-        console.log("wood counter: "+counter);
-    }
-    if(e.getAttribute('id')==='amount-ground'){
-        countGround.innerText=Number(counter-1);
-        item='ground';
-        gameBoard.classList.add('ground-cur');
-        console.log("ground counter: "+counter);
-    }
+    //     gameBoard.classList.add('stone-cur');
+    // }
+    // if(e.getAttribute('id')==='amount-wood'){
+    //     e.innerText=Number(counter-1);
+    //     item='wood';
+    //     gameBoard.classList.add('wood-cur');
+    //     console.log("wood counter: "+counter);
+    // }
+    // if(e.getAttribute('id')==='amount-ground'){
+    //     e.innerText=Number(counter-1);
+    //     item='ground';
+    //     gameBoard.classList.add('ground-cur');
+    //     console.log("ground counter: "+counter);
+    // }
 
 
 }
@@ -304,7 +329,23 @@ window.addEventListener('click', e=>{
 
     if(clickedDiv.classList.value===''){
         console.log("choseeeeeeen: "+chosenClass);
-        clickedDiv.classList.add(chosenClass);
+        console.log("can take ground"+ document.getElementById('amount-ground').getAttribute('can-take'));
+        console.log("can take wood"+ document.getElementById('amount-wood').getAttribute('can-take'));
+        console.log("can take stone"+ document.getElementById('amount-stone').getAttribute('can-take'));
+        if(chosenClass==='ground' && document.getElementById('amount-ground').getAttribute('can-take')==='true' ){
+            clickedDiv.classList.add(chosenClass);
+            invMinus(document.getElementById('amount-ground'));
+        }
+        else if(chosenClass==='wood' && document.getElementById('amount-wood').getAttribute('can-take')==='true'){
+            clickedDiv.classList.add(chosenClass);
+            invMinus(document.getElementById('amount-wood'));
+            
+        }
+        else if(chosenClass==='stone' && document.getElementById('amount-stone').getAttribute('can-take')==='true'){
+            clickedDiv.classList.add(chosenClass);
+            invMinus(document.getElementById('amount-stone'));
+
+        }
         
     }
 
@@ -321,7 +362,7 @@ window.addEventListener('click', e=>{
         if(e.target.getAttribute('id')==='inv-w') chosenClass='wood';
         console.log("chosen class"+chosenClass);
         myFunction(clickedDiv);
-        invMinus(clickedDiv);
+        // invMinus(clickedDiv);
     }
     
    
