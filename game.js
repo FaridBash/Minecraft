@@ -30,6 +30,10 @@ let woodInvBool=false;
 let groundInvBool=false;
 let stoneInvBool=false;
 
+
+let useTools=false;
+let useInv=false;
+
 function stopTakingFromInv(){
     woodInvBool=false;
     groundInvBool=false;
@@ -71,19 +75,26 @@ function countItems(e1, e2){
 
 //===================REMOVE ITEM FROM INVENTORY==========
 
-const invBox=document.getElementsByClassName('img-inventory');
+function takeMarkerInv(){
+    const invBox=document.getElementsByClassName('img-inventory');
+    for (let i = 0; i < invBox.length; i++) {
+        const element = invBox[i];
+        element.setAttribute('choosen',false);
+        element.parentElement.style.border='2px solid transparent';
+    }
+}
+
+
 function myFunction(box){
     removeCur();
     resetTools();
-    for (let i = 0; i < invBox.length; i++) {
-        const element = invBox[i];
-        element.setAttribute('take',false);
-        element.parentElement.style.border='2px solid transparent';
-    }
-    box.setAttribute('take',true);
-    groundInvBool=document.getElementById('inv-g').getAttribute('take');
-    stoneInvBool=document.getElementById('inv-s').getAttribute('take');
-    woodInvBool=document.getElementById('inv-w').getAttribute('take');
+    takeMarkerTool();
+    takeMarkerInv();
+
+    box.setAttribute('choosen',true);
+    groundInvBool=document.getElementById('inv-g').getAttribute('choosen');
+    stoneInvBool=document.getElementById('inv-s').getAttribute('choosen');
+    woodInvBool=document.getElementById('inv-w').getAttribute('choosen');
     box.parentElement.style.border='2px solid orange'; 
     
     if(groundInvBool==='true'){
@@ -99,52 +110,85 @@ function myFunction(box){
         
         gameBoard.classList.add('wood-cur');
     } 
-    return box;
 
+    
+    return box;
 }
 
-function inventoryTakeOut(e2){
-    myFunction(e2);
-    let item='';
-    let counter=Number(e2.innerText);
-    
-    console.log("inv num: "+e2.getAttribute('id'));
-    if(e2.getAttribute('id')==='amount-stone'){
+function invMinus(e){
+    let counter=Number(e.innerText);
+    console.log("main counter: "+counter);
+    console.log("inv num: "+e.getAttribute('id'));
+    if(e.getAttribute('id')==='amount-stone'){
         countStone.innerText=Number(counter-1);
         item='ground';
+        console.log("stone counter: "+counter);
         
         gameBoard.classList.add('stone-cur');
     }
-    if(e2.getAttribute('id')==='amount-wood'){
+    if(e.getAttribute('id')==='amount-wood'){
         countWood.innerText=Number(counter-1);
         item='wood';
         gameBoard.classList.add('wood-cur');
+        console.log("wood counter: "+counter);
     }
-    if(e2.getAttribute('id')==='amount-ground'){
+    if(e.getAttribute('id')==='amount-ground'){
         countGround.innerText=Number(counter-1);
         item='ground';
         gameBoard.classList.add('ground-cur');
+        console.log("ground counter: "+counter);
     }
-    
-    return item;
+
+
 }
+
+// function inventoryTakeOut(e2){
+//     // myFunction(e2);
+//     resetTools();
+//     let item='';
+//     let counter=Number(e2.innerText);
+    
+//     console.log("inv num: "+e2.getAttribute('id'));
+//     if(e2.getAttribute('id')==='amount-stone'){
+//         countStone.innerText=Number(counter-1);
+//         item='ground';
+        
+//         gameBoard.classList.add('stone-cur');
+//     }
+//     if(e2.getAttribute('id')==='amount-wood'){
+//         countWood.innerText=Number(counter-1);
+//         item='wood';
+//         gameBoard.classList.add('wood-cur');
+//     }
+//     if(e2.getAttribute('id')==='amount-ground'){
+//         countGround.innerText=Number(counter-1);
+//         item='ground';
+//         gameBoard.classList.add('ground-cur');
+//     }
+    
+//     return item;
+// }
 
 //===================REMOVE ITEM FROM INVENTORY FINISH===
 
 //==========Inventory Counter FINISHED===============
 
-const myTools=document.getElementsByClassName('tool');
-
-
 //==========CHOOSING TOOL========================
-function getTool(tool){
-    removeCur();
-    stopTakingFromInv();
+
+function takeMarkerTool(){
+    const myTools=document.getElementsByClassName('tool');
     for (let i = 0; i < myTools.length; i++) {
         const element = myTools[i];
         element.setAttribute('choosen',false);
         element.style.border='0px solid transparent';
     }
+}
+
+function getTool(tool){
+    removeCur();
+    stopTakingFromInv();
+    takeMarkerTool();
+    takeMarkerInv();
     
     tool.setAttribute('choosen',true);
     axeBool=document.getElementById('axe').getAttribute('choosen');
@@ -277,6 +321,7 @@ window.addEventListener('click', e=>{
         if(e.target.getAttribute('id')==='inv-w') chosenClass='wood';
         console.log("chosen class"+chosenClass);
         myFunction(clickedDiv);
+        invMinus(clickedDiv);
     }
     
    
@@ -293,19 +338,6 @@ window.addEventListener('click', e=>{
         clickedDiv.classList.remove(...clickedDiv.classList);
     }
 
-    // console.log("myID "+clickedDiv.getAttribute('id'));
-    
-    // if(clickedDiv.getAttribute('id')==='inv-g'){
-    //     chosenClass=inventoryTakeOut(countGround);
-    //     console.log('CCCCCCC++++++'+chosenClass);
-    // }
-    // if(clickedDiv.getAttribute('id')==='inv-w'){
-    //     chosenClass=inventoryTakeOut(countWood);
-    // }
-    // if(clickedDiv.getAttribute('id')==='inv-s'){
-    //     chosenClass=inventoryTakeOut(countStone);
-    // }
-    
    
 
 
