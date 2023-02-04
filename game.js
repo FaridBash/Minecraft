@@ -248,11 +248,6 @@ function removeCur(){
 }
 //=================================================
 
-function drawFromInventory(e){
-
-}
-
-
 
 function getDiv(){
     const drawDiv=document.createElement('div');
