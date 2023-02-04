@@ -7,9 +7,9 @@ const gameBoard=document.getElementById('game-board')
 
 
 const mapArr=[
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-    [0,0,0,7,7,7,7,7,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0],
+    [7,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,7,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,7,7,7,7,7,7,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,7,7,7,7,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,5,5,5,5,5,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,5,5,5,0,0,0,0],
@@ -274,42 +274,94 @@ function draw(gameb, cls,i,j){
 function drawMap(){
 
     for (let i = 0; i < mapArr.length; i++) {
-        for (let j = 0; j < mapArr[i].length; j++) {
+        let j=0;
+
+        function myLoop(){
             const element = mapArr[i][j];
-            if(element==0){
-                    // draw(gameb, cls,i,j);
-                    draw(gameBoard,'nothing',i,j);
+            setTimeout(() => {
+                if(j<mapArr[i].length){
+                    // const element = mapArr[i][j];
+                    if(element==0){
+                            // draw(gameb, cls,i,j);
+                            draw(gameBoard,'nothing',i,j);
+                        }
+                        if(element==1){
+                            // draw(gameb, cls,i,j);
+                            draw(gameBoard, 'sun',i,j);
+                        }
+                        if(element==2){
+                            // draw(gameb, cls,i,j);
+                            draw(gameBoard, 'ground-grass',i,j);
+                        }
+                        if(element==3){
+                            // draw(gameb, cls,i,j);
+                            draw(gameBoard, 'ground',i,j);
+                        }
+                        if(element==4){
+                            // draw(gameb, cls,i,j);
+                            draw(gameBoard, 'wood',i,j);
+                        }
+                        if(element==5){
+                            // draw(gameb, cls,i,j);
+                            draw(gameBoard, 'green',i,j);
+                        }
+                        if(element==6){
+                            // draw(gameb, cls,i,j);
+                            draw(gameBoard, 'stone',i,j);
+                        }
+                        if(element==7){
+                            // draw(gameb, cls,i,j);
+                            draw(gameBoard, 'cloud',i,j);
+                        }
+                    j++;
+                    myLoop();
                 }
-                if(element==1){
-                    // draw(gameb, cls,i,j);
-                    draw(gameBoard, 'sun',i,j);
-                }
-                if(element==2){
-                    // draw(gameb, cls,i,j);
-                    draw(gameBoard, 'ground-grass',i,j);
-                }
-                if(element==3){
-                    // draw(gameb, cls,i,j);
-                    draw(gameBoard, 'ground',i,j);
-                }
-                if(element==4){
-                    // draw(gameb, cls,i,j);
-                    draw(gameBoard, 'wood',i,j);
-                }
-                if(element==5){
-                    // draw(gameb, cls,i,j);
-                    draw(gameBoard, 'green',i,j);
-                }
-                if(element==6){
-                    // draw(gameb, cls,i,j);
-                    draw(gameBoard, 'stone',i,j);
-                }
-                if(element==7){
-                    // draw(gameb, cls,i,j);
-                    draw(gameBoard, 'cloud',i,j);
-                }
-        }   
+            }, 70);
+            
+        }
+        console.log(j);
+        myLoop();
+
     }
+
+
+    // for (let i = 0; i < mapArr.length; i++) {
+    //     for (let j = 0; j < mapArr[i].length; j++) {
+    //         const element = mapArr[i][j];
+    //         if(element==0){
+    //                 // draw(gameb, cls,i,j);
+    //                 draw(gameBoard,'nothing',i,j);
+    //             }
+    //             if(element==1){
+    //                 // draw(gameb, cls,i,j);
+    //                 draw(gameBoard, 'sun',i,j);
+    //             }
+    //             if(element==2){
+    //                 // draw(gameb, cls,i,j);
+    //                 draw(gameBoard, 'ground-grass',i,j);
+    //             }
+    //             if(element==3){
+    //                 // draw(gameb, cls,i,j);
+    //                 draw(gameBoard, 'ground',i,j);
+    //             }
+    //             if(element==4){
+    //                 // draw(gameb, cls,i,j);
+    //                 draw(gameBoard, 'wood',i,j);
+    //             }
+    //             if(element==5){
+    //                 // draw(gameb, cls,i,j);
+    //                 draw(gameBoard, 'green',i,j);
+    //             }
+    //             if(element==6){
+    //                 // draw(gameb, cls,i,j);
+    //                 draw(gameBoard, 'stone',i,j);
+    //             }
+    //             if(element==7){
+    //                 // draw(gameb, cls,i,j);
+    //                 draw(gameBoard, 'cloud',i,j);
+    //             }
+    //     }   
+    // }
 }
 
 
